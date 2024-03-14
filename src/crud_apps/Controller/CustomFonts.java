@@ -14,11 +14,11 @@ import java.io.IOException;
  *
  * @author Wahyu Khoirur Rizal
  */
-public class FontCustoms {
+public class CustomFonts {
     
     private Font RobotoMedium;
 
-    public FontCustoms() {
+    public CustomFonts() {
         File robotomedium = new File("src/CRUD_Apps/Model/Fonts/Roboto-Medoum.ttf");
         try {
             RobotoMedium = Font.createFont(Font.TRUETYPE_FONT, robotomedium);

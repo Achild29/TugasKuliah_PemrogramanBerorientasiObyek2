@@ -5,7 +5,7 @@
  */
 package crud_apps;
 
-import crud_apps.View.Welcome.WelcomeFrame;
+import crud_apps.View.Welcome.WelcomeFrameStart;
 
 /**
  *
@@ -18,7 +18,7 @@ public class CRUD_Apps {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        new WelcomeFrame().setVisible(true);
+        new WelcomeFrameStart().setVisible(true);
     }
     
 }

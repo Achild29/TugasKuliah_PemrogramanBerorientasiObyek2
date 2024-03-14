@@ -5,7 +5,7 @@
  */
 package crud_apps.View.Welcome;
 
-import crud_apps.Controller.FontCustoms;
+import crud_apps.Controller.CustomFonts;
 
 /**
  *
@@ -16,7 +16,7 @@ public class WelcomeFrame extends javax.swing.JFrame {
     /**
      * Creates new form WelcomeFrame
      */
-    FontCustoms fontCustoms = new FontCustoms();
+    CustomFonts fontCustoms = new CustomFonts();
     public WelcomeFrame() {
         initComponents();
     }
@@ -48,7 +48,6 @@ public class WelcomeFrame extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1020, 670));
         setName("frame0"); // NOI18N
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1020, 680));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -173,6 +172,9 @@ public class WelcomeFrame extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(WelcomeFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
