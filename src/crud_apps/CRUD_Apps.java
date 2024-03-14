@@ -5,6 +5,8 @@
  */
 package crud_apps;
 
+import crud_apps.View.Welcome.WelcomeFrame;
+
 /**
  *
  * @author Wahyu Khoirur Rizal
@@ -16,6 +18,7 @@ public class CRUD_Apps {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        new WelcomeFrame().setVisible(true);
     }
     
 }
