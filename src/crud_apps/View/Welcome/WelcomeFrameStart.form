@@ -116,6 +116,11 @@
               <Dimension value="[880, 24]"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseDragged" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="menutTitleMouseDragged"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="menutTitleMouseClicked"/>
+            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="menutTitleMousePressed"/>
+          </Events>
         </Menu>
         <Menu class="javax.swing.JMenu" name="XBtn">
           <Properties>
@@ -230,9 +235,6 @@
                   <Connection code="fontCustoms.getStarjedise().deriveFont(18f)&#xd;&#xa;" type="code"/>
                 </Property>
                 <Property name="tepi" type="int" value="45"/>
-                <Property name="warna" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="cc" green="cc" red="0" type="rgb"/>
-                </Property>
                 <Property name="warnaClick" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="cc" type="rgb"/>
                 </Property>

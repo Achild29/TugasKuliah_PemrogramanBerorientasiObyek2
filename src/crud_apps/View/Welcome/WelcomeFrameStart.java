@@ -7,6 +7,7 @@ package crud_apps.View.Welcome;
 
 import crud_apps.Controller.CustomButton;
 import crud_apps.Controller.CustomFonts;
+import crud_apps.Controller.Lokasi;
 
 /**
  *
@@ -17,6 +18,7 @@ public class WelcomeFrameStart extends javax.swing.JFrame {
     /**
      * Creates new form WelcomeFrame
      */
+    Lokasi lokasi = new Lokasi(this);
     CustomFonts fontCustoms = new CustomFonts();
     public WelcomeFrameStart() {
         initComponents();
@@ -77,7 +79,6 @@ public class WelcomeFrameStart extends javax.swing.JFrame {
         StartBtn.setFont(fontCustoms.getStarjedise().deriveFont(18f)
         );
         StartBtn.setTepi(45);
-        StartBtn.setWarna(new java.awt.Color(0, 204, 204));
         StartBtn.setWarnaClick(new java.awt.Color(204, 255, 255));
         StartBtn.setWarnaOver(new java.awt.Color(0, 102, 255));
         StartBtn.setWarnaTepi(new java.awt.Color(0, 0, 102));
@@ -194,6 +195,19 @@ public class WelcomeFrameStart extends javax.swing.JFrame {
     menutTitle.setIconTextGap(400);
     menutTitle.setMaximumSize(new java.awt.Dimension(1000, 50));
     menutTitle.setPreferredSize(new java.awt.Dimension(880, 24));
+    menutTitle.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+        public void mouseDragged(java.awt.event.MouseEvent evt) {
+            menutTitleMouseDragged(evt);
+        }
+    });
+    menutTitle.addMouseListener(new java.awt.event.MouseAdapter() {
+        public void mouseClicked(java.awt.event.MouseEvent evt) {
+            menutTitleMouseClicked(evt);
+        }
+        public void mousePressed(java.awt.event.MouseEvent evt) {
+            menutTitleMousePressed(evt);
+        }
+    });
     menuBar.add(menutTitle);
 
     XBtn.setBorder(null);
@@ -252,6 +266,21 @@ public class WelcomeFrameStart extends javax.swing.JFrame {
         // TODO add your handling code here:
         new WelcomeFrame().setVisible(true);
     }//GEN-LAST:event_StartBtnActionPerformed
+
+    private void menutTitleMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menutTitleMousePressed
+        // TODO add your handling code here:
+        lokasi.pressed(evt);
+//        addComponentListener(lokasi);
+    }//GEN-LAST:event_menutTitleMousePressed
+
+    private void menutTitleMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menutTitleMouseDragged
+         // TODO add your handling code here:
+        lokasi.dragged(evt);
+    }//GEN-LAST:event_menutTitleMouseDragged
+
+    private void menutTitleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menutTitleMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menutTitleMouseClicked
 
     /**
      * @param args the command line arguments
