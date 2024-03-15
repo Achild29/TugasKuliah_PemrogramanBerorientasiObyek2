@@ -72,13 +72,14 @@ public class WelcomeFrameStart extends javax.swing.JFrame {
 
         StartBtn.setBackground(new java.awt.Color(0, 204, 204));
         StartBtn.setBorder(null);
-        StartBtn.setForeground(new java.awt.Color(0, 255, 255));
+        StartBtn.setForeground(new java.awt.Color(255, 255, 255));
         StartBtn.setText("Start");
         StartBtn.setFocusPainted(false);
         StartBtn.setFocusTraversalPolicyProvider(true);
         StartBtn.setFont(fontCustoms.getStarjedise().deriveFont(18f)
         );
         StartBtn.setTepi(45);
+        StartBtn.setWarna(new java.awt.Color(0, 204, 204));
         StartBtn.setWarnaClick(new java.awt.Color(204, 255, 255));
         StartBtn.setWarnaOver(new java.awt.Color(0, 102, 255));
         StartBtn.setWarnaTepi(new java.awt.Color(0, 0, 102));
@@ -155,6 +156,11 @@ public class WelcomeFrameStart extends javax.swing.JFrame {
     loginMenu.setFont(fontCustoms.getRobotoMedium().deriveFont(16f));
     loginMenu.setText("Login");
     loginMenu.setBorder(null);
+    loginMenu.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            loginMenuActionPerformed(evt);
+        }
+    });
     menuFile.add(loginMenu);
 
     registerMenu.setFont(fontCustoms.getRobotoMedium().deriveFont(16f));
@@ -177,11 +183,6 @@ public class WelcomeFrameStart extends javax.swing.JFrame {
     aboutMenu.setFont(fontCustoms.getRobotoMedium().deriveFont(16f));
     aboutMenu.setText("About");
     aboutMenu.setBorder(null);
-    aboutMenu.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            aboutMenuActionPerformed(evt);
-        }
-    });
     menuHelp.add(aboutMenu);
 
     menuBar.add(menuHelp);
@@ -201,9 +202,6 @@ public class WelcomeFrameStart extends javax.swing.JFrame {
         }
     });
     menutTitle.addMouseListener(new java.awt.event.MouseAdapter() {
-        public void mouseClicked(java.awt.event.MouseEvent evt) {
-            menutTitleMouseClicked(evt);
-        }
         public void mousePressed(java.awt.event.MouseEvent evt) {
             menutTitleMousePressed(evt);
         }
@@ -227,10 +225,6 @@ public class WelcomeFrameStart extends javax.swing.JFrame {
     pack();
     setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void aboutMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_aboutMenuActionPerformed
 
     private void XBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_XBtnMouseClicked
         // TODO add your handling code here:
@@ -263,14 +257,16 @@ public class WelcomeFrameStart extends javax.swing.JFrame {
     }//GEN-LAST:event_StartBtnMouseReleased
 
     private void StartBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StartBtnActionPerformed
-        // TODO add your handling code here:
-        new WelcomeFrame().setVisible(true);
+        // TODO add your handling code here:'
+        WelcomeFrameLogin login = new WelcomeFrameLogin();
+        login.setLocation(lokasi.p());
+        login.setVisible(true);
+        dispose();
     }//GEN-LAST:event_StartBtnActionPerformed
 
     private void menutTitleMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menutTitleMousePressed
         // TODO add your handling code here:
         lokasi.pressed(evt);
-//        addComponentListener(lokasi);
     }//GEN-LAST:event_menutTitleMousePressed
 
     private void menutTitleMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menutTitleMouseDragged
@@ -278,9 +274,13 @@ public class WelcomeFrameStart extends javax.swing.JFrame {
         lokasi.dragged(evt);
     }//GEN-LAST:event_menutTitleMouseDragged
 
-    private void menutTitleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menutTitleMouseClicked
+    private void loginMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginMenuActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_menutTitleMouseClicked
+        WelcomeFrameLogin login = new WelcomeFrameLogin();
+        login.setLocation(lokasi.p());
+        login.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_loginMenuActionPerformed
 
     /**
      * @param args the command line arguments

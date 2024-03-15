@@ -8,7 +8,7 @@ package crud_apps.Controller;
 import java.awt.Frame;
 import java.awt.Point;
 import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
+//import java.awt.event.ComponentEvent;
 
 /**
  *
@@ -17,7 +17,7 @@ import java.awt.event.ComponentEvent;
 public class Lokasi extends ComponentAdapter {
     private int xx, xy, x, y;
     private Frame frame;
-
+    
     public Lokasi(Frame frame) {
         this.frame = frame;
     }
@@ -31,8 +31,6 @@ public class Lokasi extends ComponentAdapter {
     public void pressed(java.awt.event.MouseEvent evt){
         xx = evt.getX();
         xy = evt.getY();
-        System.out.print("xx = " + xx +" , " );
-        System.out.println("xy = " + xy);
     }
     
     public void dragged(java.awt.event.MouseEvent evt){
@@ -42,16 +40,37 @@ public class Lokasi extends ComponentAdapter {
     }
     
     public void setLokasiFrame(int x, int y) {
-        if (isValidLocation(x, y)) {
-            frame.setLocation(x, y);
-        } else {
-            // Handle invalid location (e.g., negative coordinates)
-            System.err.println("Lokasi frame tidak valid!");
-        }
+        frame.setLocation(x, y);
+//        if (isValidLocation(x, y)) {
+//            frame.setLocation(x, y);
+//        } else {
+//            // Handle invalid location (e.g., negative coordinates)
+//            System.err.println("Lokasi frame tidak valid!");
+//        }
     }
     
-     private boolean isValidLocation(int x, int y) {
-        // Implement logic to check for valid location (e.g., within screen bounds)
-        return x >= 0 && y >= 0;
+//     private boolean isValidLocation(int x, int y) {
+//        // Implement logic to check for valid location (e.g., within screen bounds)
+//        return x >= 0 && y >= 0;
+//    }
+     
+     public Point p(){
+        return frame.getLocation();
+     }
+
+    public int getX() {
+        return x;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
     }
 }
