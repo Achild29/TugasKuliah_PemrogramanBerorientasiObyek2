@@ -5,6 +5,7 @@
  */
 package crud_apps.View.Welcome;
 
+import crud_apps.Controller.CustomButton;
 import crud_apps.Controller.CustomFonts;
 
 /**
@@ -32,7 +33,12 @@ public class WelcomeFrameStart extends javax.swing.JFrame {
 
         panelBg = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        StartBtn = new crud_apps.Controller.CustomButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        bgWhite = new javax.swing.JLabel();
         BackgroundLbl = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
         menuFile = new javax.swing.JMenu();
@@ -47,8 +53,8 @@ public class WelcomeFrameStart extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Welcome");
         setBackground(new java.awt.Color(255, 255, 255));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setMinimumSize(new java.awt.Dimension(1020, 670));
-        setName("frame0"); // NOI18N
         setUndecorated(true);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -62,10 +68,67 @@ public class WelcomeFrameStart extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(360, 360));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crud_apps/Model/img/BgWhite.png"))); // NOI18N
-        jLabel2.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 255, 255), 4, true), "Welcome", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, fontCustoms.getRobotoMedium().deriveFont(20f)
+        StartBtn.setBackground(new java.awt.Color(0, 204, 204));
+        StartBtn.setBorder(null);
+        StartBtn.setForeground(new java.awt.Color(0, 255, 255));
+        StartBtn.setText("Start");
+        StartBtn.setFocusPainted(false);
+        StartBtn.setFocusTraversalPolicyProvider(true);
+        StartBtn.setFont(fontCustoms.getStarjedise().deriveFont(18f)
+        );
+        StartBtn.setTepi(45);
+        StartBtn.setWarna(new java.awt.Color(0, 204, 204));
+        StartBtn.setWarnaClick(new java.awt.Color(204, 255, 255));
+        StartBtn.setWarnaOver(new java.awt.Color(0, 102, 255));
+        StartBtn.setWarnaTepi(new java.awt.Color(0, 0, 102));
+        StartBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                StartBtnMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                StartBtnMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                StartBtnMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                StartBtnMouseReleased(evt);
+            }
+        });
+        StartBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                StartBtnActionPerformed(evt);
+            }
+        });
+        jPanel1.add(StartBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, 130, 50));
+
+        jLabel3.setFont(fontCustoms.getRubikMedium().deriveFont(14f)
+        );
+        jLabel3.setText("to begin your journey !");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, -1, -1));
+
+        jLabel1.setFont(fontCustoms.getStarjedise().deriveFont(24f)
+        );
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Start");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, -1, -1));
+
+        jLabel4.setFont(fontCustoms.getHandleeRegular().deriveFont(20f)
+        );
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("click");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, -1, -1));
+
+        jLabel5.setFont(fontCustoms.getRubikMedium().deriveFont(14f)
+        );
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("on below");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 120, -1, -1));
+
+        bgWhite.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crud_apps/Model/img/BgWhite.png"))); // NOI18N
+        bgWhite.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 255, 255), 4, true), "Welcome", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, fontCustoms.getRobotoMedium().deriveFont(18f)
             , new java.awt.Color(204, 255, 255)));
-    jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, -1, -1));
+    jPanel1.add(bgWhite, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, -1, -1));
 
     panelBg.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, -1, -1));
 
@@ -160,6 +223,36 @@ public class WelcomeFrameStart extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_XBtnMouseClicked
 
+    private void StartBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_StartBtnMouseEntered
+        // TODO add your handling code here:
+        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_StartBtnMouseEntered
+
+    private void StartBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_StartBtnMouseExited
+        // TODO add your handling code here:
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+    }//GEN-LAST:event_StartBtnMouseExited
+
+    private void StartBtnMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_StartBtnMousePressed
+        // TODO add your handling code here:
+        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_StartBtnMousePressed
+
+    private void StartBtnMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_StartBtnMouseReleased
+        // TODO add your handling code here:
+        CustomButton getOver = new CustomButton();
+        if (getOver.isOver()) {
+            setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        } else {
+            setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        }
+    }//GEN-LAST:event_StartBtnMouseReleased
+
+    private void StartBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StartBtnActionPerformed
+        // TODO add your handling code here:
+        new WelcomeFrame().setVisible(true);
+    }//GEN-LAST:event_StartBtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -204,10 +297,15 @@ public class WelcomeFrameStart extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel BackgroundLbl;
+    private crud_apps.Controller.CustomButton StartBtn;
     private javax.swing.JMenu XBtn;
     private javax.swing.JMenuItem aboutMenu;
+    private javax.swing.JLabel bgWhite;
     private javax.swing.JMenuItem helpMenu;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JMenuItem loginMenu;
     private javax.swing.JMenuBar menuBar;
