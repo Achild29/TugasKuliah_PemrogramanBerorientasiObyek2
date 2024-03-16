@@ -21,6 +21,7 @@ public class WelcomeFrameLogin extends javax.swing.JFrame {
     Lokasi lokasi = new Lokasi(this);
     private boolean over;
     CustomFonts fontCustoms = new CustomFonts();
+    WelcomeFrameRegister register = new WelcomeFrameRegister();
     public WelcomeFrameLogin() {
         initComponents();
     }
@@ -101,10 +102,7 @@ public class WelcomeFrameLogin extends javax.swing.JFrame {
         );
         usernameTxtLogin.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         usernameTxtLogin.setBorder(null);
-        usernameTxtLogin.setCaretPosition(0);
         usernameTxtLogin.setOpaque(false);
-        usernameTxtLogin.setPreferredSize(new java.awt.Dimension(0, 16));
-        usernameTxtLogin.setScrollOffset(0);
         usernameTxtLogin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 usernameTxtLoginMouseEntered(evt);
@@ -217,6 +215,9 @@ public class WelcomeFrameLogin extends javax.swing.JFrame {
         Register.setForeground(new java.awt.Color(0, 0, 204));
         Register.setText("Create an account");
         Register.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                RegisterMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 RegisterMouseEntered(evt);
             }
@@ -270,6 +271,11 @@ public class WelcomeFrameLogin extends javax.swing.JFrame {
         registerMenu.setFont(fontCustoms.getRobotoMedium().deriveFont(16f));
         registerMenu.setText("Register");
         registerMenu.setBorder(null);
+        registerMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                registerMenuMouseClicked(evt);
+            }
+        });
         menuFile.add(registerMenu);
 
         menuBar.add(menuFile);
@@ -334,10 +340,6 @@ public class WelcomeFrameLogin extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void aboutMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_aboutMenuActionPerformed
 
     private void XBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_XBtnMouseClicked
         // TODO add your handling code here:
@@ -474,6 +476,24 @@ public class WelcomeFrameLogin extends javax.swing.JFrame {
             Register.setForeground(new java.awt.Color(0,0,204));
         }
     }//GEN-LAST:event_RegisterMouseReleased
+
+    private void aboutMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_aboutMenuActionPerformed
+
+    private void RegisterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RegisterMouseClicked
+        // TODO add your handling code here:
+        register.setLocation(lokasi.p());
+        register.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_RegisterMouseClicked
+
+    private void registerMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerMenuMouseClicked
+        // TODO add your handling code here:
+        register.setLocation(lokasi.p());
+        register.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_registerMenuMouseClicked
 
     /**
      * @param args the command line arguments

@@ -166,6 +166,11 @@ public class WelcomeFrameStart extends javax.swing.JFrame {
     registerMenu.setFont(fontCustoms.getRobotoMedium().deriveFont(16f));
     registerMenu.setText("Register");
     registerMenu.setBorder(null);
+    registerMenu.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            registerMenuActionPerformed(evt);
+        }
+    });
     menuFile.add(registerMenu);
 
     menuBar.add(menuFile);
@@ -281,6 +286,14 @@ public class WelcomeFrameStart extends javax.swing.JFrame {
         login.setVisible(true);
         dispose();
     }//GEN-LAST:event_loginMenuActionPerformed
+
+    private void registerMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerMenuActionPerformed
+        // TODO add your handling code here:
+        WelcomeFrameRegister register = new WelcomeFrameRegister();
+        register.setLocation(lokasi.p());
+        register.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_registerMenuActionPerformed
 
     /**
      * @param args the command line arguments
