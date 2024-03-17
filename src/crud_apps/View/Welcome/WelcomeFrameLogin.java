@@ -8,6 +8,8 @@ package crud_apps.View.Welcome;
 import crud_apps.Controller.CustomFonts;
 import crud_apps.Controller.Lokasi;
 import java.awt.Color;
+import java.awt.event.KeyEvent;
+import java.util.Arrays;
 
 /**
  *
@@ -46,7 +48,7 @@ public class WelcomeFrameLogin extends javax.swing.JFrame {
         panelFormPassword = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         forgotPassword = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        passwordTxt = new javax.swing.JPasswordField();
         bgPassword = new crud_apps.Controller.CustomButton();
         LoginBtn = new crud_apps.Controller.CustomButton();
         jLabel5 = new javax.swing.JLabel();
@@ -83,6 +85,7 @@ public class WelcomeFrameLogin extends javax.swing.JFrame {
         panelLoginForm.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/crud_apps/Model/img/yourLogo.png"))); // NOI18N
+        logo.setNextFocusableComponent(usernameTxtLogin);
         panelLoginForm.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, -1, -1));
 
         jLabel1.setFont(fontCustoms.getRobotoBlak().deriveFont(22f)
@@ -101,8 +104,17 @@ public class WelcomeFrameLogin extends javax.swing.JFrame {
         usernameTxtLogin.setFont(fontCustoms.getPoppinsMedium().deriveFont(18f)
         );
         usernameTxtLogin.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        usernameTxtLogin.setText("enter your username");
+        usernameTxtLogin.setToolTipText("enter your username");
         usernameTxtLogin.setBorder(null);
+        usernameTxtLogin.setFocusable(false);
+        usernameTxtLogin.setNextFocusableComponent(passwordTxt);
         usernameTxtLogin.setOpaque(false);
+        usernameTxtLogin.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                usernameTxtLoginFocusGained(evt);
+            }
+        });
         usernameTxtLogin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 usernameTxtLoginMouseEntered(evt);
@@ -158,25 +170,40 @@ public class WelcomeFrameLogin extends javax.swing.JFrame {
         });
         panelFormPassword.add(forgotPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, -1, -1));
 
-        jPasswordField1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jPasswordField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jPasswordField1.setBorder(null);
-        jPasswordField1.setOpaque(false);
-        jPasswordField1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPasswordField1MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPasswordField1MouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jPasswordField1MousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jPasswordField1MouseReleased(evt);
+        passwordTxt.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        passwordTxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        passwordTxt.setText("password");
+        passwordTxt.setToolTipText("");
+        passwordTxt.setBorder(null);
+        passwordTxt.setEchoChar('\u0000');
+        passwordTxt.setFocusable(false);
+        passwordTxt.setNextFocusableComponent(LoginBtn);
+        passwordTxt.setOpaque(false);
+        passwordTxt.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                passwordTxtFocusGained(evt);
             }
         });
-        panelFormPassword.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 250, 30));
+        passwordTxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                passwordTxtMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                passwordTxtMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                passwordTxtMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                passwordTxtMouseReleased(evt);
+            }
+        });
+        passwordTxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                passwordTxtKeyPressed(evt);
+            }
+        });
+        panelFormPassword.add(passwordTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 250, 30));
 
         bgPassword.setBackground(new java.awt.Color(255, 255, 255));
         bgPassword.setBorder(null);
@@ -201,6 +228,11 @@ public class WelcomeFrameLogin extends javax.swing.JFrame {
         LoginBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 LoginBtnActionPerformed(evt);
+            }
+        });
+        LoginBtn.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                LoginBtnKeyPressed(evt);
             }
         });
         panelLoginForm.add(LoginBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 460, 200, 50));
@@ -257,6 +289,11 @@ public class WelcomeFrameLogin extends javax.swing.JFrame {
         menuFile.setText("File");
         menuFile.setFont(fontCustoms.getRobotoMedium().deriveFont(16f)
         );
+        menuFile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuFileActionPerformed(evt);
+            }
+        });
 
         startMenu.setFont(fontCustoms.getRobotoMedium().deriveFont(16f));
         startMenu.setText("Start");
@@ -271,9 +308,9 @@ public class WelcomeFrameLogin extends javax.swing.JFrame {
         registerMenu.setFont(fontCustoms.getRobotoMedium().deriveFont(16f));
         registerMenu.setText("Register");
         registerMenu.setBorder(null);
-        registerMenu.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                registerMenuMouseClicked(evt);
+        registerMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registerMenuActionPerformed(evt);
             }
         });
         menuFile.add(registerMenu);
@@ -368,6 +405,7 @@ public class WelcomeFrameLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
         bgUsername.setBackground(bgUsername.getWarnaOver());
         this.over = true;
+        usernameTxtLogin.setFocusable(over);
     }//GEN-LAST:event_usernameTxtLoginMouseEntered
 
     private void usernameTxtLoginMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usernameTxtLoginMouseExited
@@ -379,6 +417,7 @@ public class WelcomeFrameLogin extends javax.swing.JFrame {
     private void usernameTxtLoginMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usernameTxtLoginMousePressed
         // TODO add your handling code here:
         bgUsername.setBackground(bgUsername.getWarnaClick());
+        usernameTxtLogin.selectAll();
     }//GEN-LAST:event_usernameTxtLoginMousePressed
 
     private void usernameTxtLoginMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usernameTxtLoginMouseReleased
@@ -390,34 +429,38 @@ public class WelcomeFrameLogin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_usernameTxtLoginMouseReleased
 
-    private void jPasswordField1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPasswordField1MouseEntered
+    private void passwordTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passwordTxtMouseEntered
         // TODO add your handling code here:
         bgPassword.setBackground(bgPassword.getWarnaOver());
         this.over = true;
-    }//GEN-LAST:event_jPasswordField1MouseEntered
+        passwordTxt.setFocusable(over);
+    }//GEN-LAST:event_passwordTxtMouseEntered
 
-    private void jPasswordField1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPasswordField1MouseExited
+    private void passwordTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passwordTxtMouseExited
         // TODO add your handling code here:
         bgPassword.setBackground(bgPassword.getWarna());
         this.over = true;
-    }//GEN-LAST:event_jPasswordField1MouseExited
+    }//GEN-LAST:event_passwordTxtMouseExited
 
-    private void jPasswordField1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPasswordField1MousePressed
+    private void passwordTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passwordTxtMousePressed
         // TODO add your handling code here:
         bgPassword.setBackground(bgPassword.getWarnaClick());
-    }//GEN-LAST:event_jPasswordField1MousePressed
+        passwordTxt.setEchoChar('\u25cf');
+        passwordTxt.selectAll();
+    }//GEN-LAST:event_passwordTxtMousePressed
 
-    private void jPasswordField1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPasswordField1MouseReleased
+    private void passwordTxtMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passwordTxtMouseReleased
         // TODO add your handling code here:
         if(this.over){
             bgPassword.setBackground(bgPassword.getWarnaOver());
         } else {
             bgPassword.setBackground(bgPassword.getWarna());
         }
-    }//GEN-LAST:event_jPasswordField1MouseReleased
+    }//GEN-LAST:event_passwordTxtMouseReleased
 
     private void LoginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginBtnActionPerformed
         // TODO add your handling code here:
+        System.out.println("OK");
     }//GEN-LAST:event_LoginBtnActionPerformed
 
     private void forgotPasswordMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_forgotPasswordMouseEntered
@@ -488,12 +531,51 @@ public class WelcomeFrameLogin extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_RegisterMouseClicked
 
-    private void registerMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerMenuMouseClicked
+    private void usernameTxtLoginFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernameTxtLoginFocusGained
+        // TODO add your handling code here:
+        if (usernameTxtLogin.getText().equals("enter your username")) {
+            usernameTxtLogin.setText("");
+            passwordTxt.setFocusable(true);
+        }
+    }//GEN-LAST:event_usernameTxtLoginFocusGained
+
+    private void passwordTxtFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordTxtFocusGained
+        // TODO add your handling code here:
+        if (passwordTxt.getText().equals("password")) {
+            passwordTxt.setText("");
+            passwordTxt.setEchoChar('\u25cf');
+        } else if (passwordTxt.hasFocus()) {
+            passwordTxt.selectAll();
+        }
+    }//GEN-LAST:event_passwordTxtFocusGained
+
+    private void passwordTxtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordTxtKeyPressed
+        // TODO add your handling code here:
+            if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+                LoginBtn.doClick();
+        }
+    }//GEN-LAST:event_passwordTxtKeyPressed
+
+    private void LoginBtnKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LoginBtnKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            LoginBtn.doClick();
+        }
+    }//GEN-LAST:event_LoginBtnKeyPressed
+
+    private void registerMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerMenuActionPerformed
         // TODO add your handling code here:
         register.setLocation(lokasi.p());
         register.setVisible(true);
         dispose();
-    }//GEN-LAST:event_registerMenuMouseClicked
+    }//GEN-LAST:event_registerMenuActionPerformed
+
+    private void menuFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFileActionPerformed
+        // TODO add your handling code here:
+        register.setLocation(lokasi.p());
+        register.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_menuFileActionPerformed
 
     /**
      * @param args the command line arguments
@@ -552,7 +634,6 @@ public class WelcomeFrameLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel logo;
     private javax.swing.JMenuBar menuBar;
@@ -563,6 +644,7 @@ public class WelcomeFrameLogin extends javax.swing.JFrame {
     private javax.swing.JPanel panelFormPassword;
     private javax.swing.JPanel panelFormUsername;
     private javax.swing.JPanel panelLoginForm;
+    private javax.swing.JPasswordField passwordTxt;
     private javax.swing.JMenuItem registerMenu;
     private javax.swing.JMenuItem startMenu;
     private javax.swing.JTextField usernameTxtLogin;

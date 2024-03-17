@@ -9,6 +9,8 @@ import crud_apps.Controller.CustomFonts;
 import crud_apps.Controller.Lokasi;
 import java.awt.Color;
 import java.awt.event.ItemEvent;
+import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -110,10 +112,18 @@ public class WelcomeFrameRegister extends javax.swing.JFrame {
         fullNameTxt.setFont(fontCustoms.getPoppinsMedium().deriveFont(18f)
         );
         fullNameTxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        fullNameTxt.setText("Type your Full name here");
         fullNameTxt.setToolTipText("Type your Full name here");
         fullNameTxt.setBorder(null);
+        fullNameTxt.setFocusable(false);
         fullNameTxt.setName("Type your Full name here"); // NOI18N
+        fullNameTxt.setNextFocusableComponent(usernameTxtRegist);
         fullNameTxt.setOpaque(false);
+        fullNameTxt.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fullNameTxtFocusGained(evt);
+            }
+        });
         fullNameTxt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 fullNameTxtMouseEntered(evt);
@@ -153,9 +163,17 @@ public class WelcomeFrameRegister extends javax.swing.JFrame {
         usernameTxtRegist.setFont(fontCustoms.getPoppinsMedium().deriveFont(18f)
         );
         usernameTxtRegist.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        usernameTxtRegist.setToolTipText("Type your Full name here");
+        usernameTxtRegist.setText("Create your username");
+        usernameTxtRegist.setToolTipText("Create your username");
         usernameTxtRegist.setBorder(null);
+        usernameTxtRegist.setFocusable(false);
+        usernameTxtRegist.setNextFocusableComponent(emailTxt);
         usernameTxtRegist.setOpaque(false);
+        usernameTxtRegist.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                usernameTxtRegistFocusGained(evt);
+            }
+        });
         usernameTxtRegist.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 usernameTxtRegistMouseEntered(evt);
@@ -195,8 +213,17 @@ public class WelcomeFrameRegister extends javax.swing.JFrame {
         emailTxt.setFont(fontCustoms.getPoppinsMedium().deriveFont(18f)
         );
         emailTxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        emailTxt.setText("Type your email here");
+        emailTxt.setToolTipText("Type your email here");
         emailTxt.setBorder(null);
+        emailTxt.setFocusable(false);
+        emailTxt.setNextFocusableComponent(passwordReg);
         emailTxt.setOpaque(false);
+        emailTxt.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                emailTxtFocusGained(evt);
+            }
+        });
         emailTxt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 emailTxtMouseEntered(evt);
@@ -234,8 +261,18 @@ public class WelcomeFrameRegister extends javax.swing.JFrame {
 
         passwordReg.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         passwordReg.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        passwordReg.setText("password");
+        passwordReg.setToolTipText("password");
         passwordReg.setBorder(null);
+        passwordReg.setEchoChar('\u0000');
+        passwordReg.setFocusable(false);
+        passwordReg.setNextFocusableComponent(passwordConfirm);
         passwordReg.setOpaque(false);
+        passwordReg.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                passwordRegFocusGained(evt);
+            }
+        });
         passwordReg.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 passwordRegMouseEntered(evt);
@@ -273,8 +310,18 @@ public class WelcomeFrameRegister extends javax.swing.JFrame {
 
         passwordConfirm.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         passwordConfirm.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        passwordConfirm.setText("password");
+        passwordConfirm.setToolTipText("password");
         passwordConfirm.setBorder(null);
+        passwordConfirm.setEchoChar('\u0000');
+        passwordConfirm.setFocusable(false);
+        passwordConfirm.setNextFocusableComponent(ceklis);
         passwordConfirm.setOpaque(false);
+        passwordConfirm.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                passwordConfirmFocusGained(evt);
+            }
+        });
         passwordConfirm.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 passwordConfirmMouseEntered(evt);
@@ -287,6 +334,11 @@ public class WelcomeFrameRegister extends javax.swing.JFrame {
             }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 passwordConfirmMouseReleased(evt);
+            }
+        });
+        passwordConfirm.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                passwordConfirmKeyReleased(evt);
             }
         });
         panelPasswordConfirm.add(passwordConfirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 250, 30));
@@ -306,7 +358,15 @@ public class WelcomeFrameRegister extends javax.swing.JFrame {
         );
         readPrivasi.setForeground(new java.awt.Color(0, 0, 204));
         readPrivasi.setText("read Privacy and Policy");
+        readPrivasi.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                readPrivasiFocusGained(evt);
+            }
+        });
         readPrivasi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                readPrivasiMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 readPrivasiMouseEntered(evt);
             }
@@ -320,14 +380,25 @@ public class WelcomeFrameRegister extends javax.swing.JFrame {
                 readPrivasiMouseReleased(evt);
             }
         });
+        readPrivasi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                readPrivasiKeyPressed(evt);
+            }
+        });
         panelRegisterForm.add(readPrivasi, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 410, -1, -1));
         panelRegisterForm.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 400, 240, 10));
 
         ceklis.setText("I accept Privacy and Policy");
+        ceklis.setNextFocusableComponent(RegistrationBtn);
         ceklis.setOpaque(false);
         ceklis.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 ceklisItemStateChanged(evt);
+            }
+        });
+        ceklis.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                ceklisKeyPressed(evt);
             }
         });
         panelRegisterForm.add(ceklis, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 380, -1, -1));
@@ -486,6 +557,7 @@ public class WelcomeFrameRegister extends javax.swing.JFrame {
         // TODO add your handling code here:
         bgfullname.setBackground(bgfullname.getWarnaOver());
         this.over = true;
+        fullNameTxt.setFocusable(over);
     }//GEN-LAST:event_fullNameTxtMouseEntered
 
     private void fullNameTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fullNameTxtMouseExited
@@ -497,6 +569,7 @@ public class WelcomeFrameRegister extends javax.swing.JFrame {
     private void fullNameTxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fullNameTxtMousePressed
         // TODO add your handling code here:
         bgfullname.setBackground(bgfullname.getWarnaClick());
+        fullNameTxt.selectAll();
     }//GEN-LAST:event_fullNameTxtMousePressed
 
     private void fullNameTxtMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fullNameTxtMouseReleased
@@ -512,6 +585,7 @@ public class WelcomeFrameRegister extends javax.swing.JFrame {
         // TODO add your handling code here:
         bgUsernameRegist.setBackground(bgUsernameRegist.getWarnaOver());
         this.over = true;
+        usernameTxtRegist.setFocusable(over);
     }//GEN-LAST:event_usernameTxtRegistMouseEntered
 
     private void usernameTxtRegistMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usernameTxtRegistMouseExited
@@ -523,6 +597,7 @@ public class WelcomeFrameRegister extends javax.swing.JFrame {
     private void usernameTxtRegistMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usernameTxtRegistMousePressed
         // TODO add your handling code here:
         bgUsernameRegist.setBackground(bgUsernameRegist.getWarnaClick());
+        usernameTxtRegist.selectAll();
     }//GEN-LAST:event_usernameTxtRegistMousePressed
 
     private void usernameTxtRegistMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usernameTxtRegistMouseReleased
@@ -534,10 +609,167 @@ public class WelcomeFrameRegister extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_usernameTxtRegistMouseReleased
 
+    private void readPrivasiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_readPrivasiMouseEntered
+        // TODO add your handling code here:
+        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        this.over = true;
+        readPrivasi.setOpaque(over);
+//        readPrivasi.setBackground(Color.WHITE);
+    }//GEN-LAST:event_readPrivasiMouseEntered
+
+    private void readPrivasiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_readPrivasiMouseExited
+        // TODO add your handling code here:
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        this.over = false;
+        readPrivasi.setOpaque(over);
+    }//GEN-LAST:event_readPrivasiMouseExited
+
+    private void readPrivasiMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_readPrivasiMousePressed
+        // TODO add your handling code here:
+        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        readPrivasi.setForeground(Color.WHITE);
+        readPrivasi.setOpaque(true);
+        
+    }//GEN-LAST:event_readPrivasiMousePressed
+
+    private void readPrivasiMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_readPrivasiMouseReleased
+        // TODO add your handling code here:
+        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        if(this.over) {
+            readPrivasi.setForeground(new java.awt.Color(0, 0, 204));
+            readPrivasi.setOpaque(false);
+        } else {
+            readPrivasi.setForeground(new java.awt.Color(0, 0, 204));
+            readPrivasi.setOpaque(false);
+        }
+    }//GEN-LAST:event_readPrivasiMouseReleased
+
+    private void passwordRegMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passwordRegMouseEntered
+        // TODO add your handling code here:
+        bgPassword.setBackground(bgPassword.getWarnaOver());
+        this.over = true;
+        passwordReg.setFocusable(over);
+    }//GEN-LAST:event_passwordRegMouseEntered
+
+    private void passwordRegMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passwordRegMouseExited
+        // TODO add your handling code here:
+        bgPassword.setBackground(bgPassword.getWarna());
+        this.over = true;
+    }//GEN-LAST:event_passwordRegMouseExited
+
+    private void passwordRegMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passwordRegMousePressed
+        // TODO add your handling code here:
+        bgPassword.setBackground(bgPassword.getWarnaClick());
+        passwordReg.setEchoChar('\u25cf');
+    }//GEN-LAST:event_passwordRegMousePressed
+
+    private void passwordRegMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passwordRegMouseReleased
+        // TODO add your handling code here:
+        if(this.over){
+            bgPassword.setBackground(bgPassword.getWarnaOver());
+        } else {
+            bgPassword.setBackground(bgPassword.getWarna());
+        }
+    }//GEN-LAST:event_passwordRegMouseReleased
+
+    private void passwordConfirmMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passwordConfirmMouseEntered
+        // TODO add your handling code here:
+        bgPasswordConfirm.setBackground(bgPasswordConfirm.getWarnaOver());
+        this.over = true;
+        passwordConfirm.setFocusable(over);
+    }//GEN-LAST:event_passwordConfirmMouseEntered
+
+    private void passwordConfirmMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passwordConfirmMouseExited
+        // TODO add your handling code here:
+        bgPasswordConfirm.setBackground(bgPasswordConfirm.getWarna());
+        this.over = false;
+    }//GEN-LAST:event_passwordConfirmMouseExited
+
+    private void passwordConfirmMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passwordConfirmMousePressed
+        // TODO add your handling code here:
+        bgPasswordConfirm.setBackground(bgPasswordConfirm.getWarnaClick());
+        passwordConfirm.setEchoChar('\u25cf');
+    }//GEN-LAST:event_passwordConfirmMousePressed
+
+    private void passwordConfirmMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passwordConfirmMouseReleased
+        // TODO add your handling code here:
+        if (this.over){
+            bgPasswordConfirm.setBackground(bgPasswordConfirm.getWarnaOver());
+        } else {
+            bgPasswordConfirm.setBackground(bgPasswordConfirm.getWarna());
+        }
+    }//GEN-LAST:event_passwordConfirmMouseReleased
+
+    private void RegistrationBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrationBtnActionPerformed
+        // TODO add your handling code here:
+        System.out.println("Tombol register clicked");
+    }//GEN-LAST:event_RegistrationBtnActionPerformed
+
+    private void ceklisItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ceklisItemStateChanged
+        // TODO add your handling code here:
+        if (evt.getStateChange() == ItemEvent.SELECTED) {
+            RegistrationBtn.setEnabled(true);
+        } else {
+            RegistrationBtn.setEnabled(false);
+        }
+    }//GEN-LAST:event_ceklisItemStateChanged
+
+    private void fullNameTxtFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fullNameTxtFocusGained
+        // TODO add your handling code here:
+        if (fullNameTxt.getText().equals("Type your Full name here")) {
+            fullNameTxt.setText("");
+            usernameTxtRegist.setFocusable(true);
+        } else if (fullNameTxt.hasFocus()) {
+            fullNameTxt.selectAll();
+        }
+    }//GEN-LAST:event_fullNameTxtFocusGained
+
+    private void usernameTxtRegistFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernameTxtRegistFocusGained
+        // TODO add your handling code here:
+        if (usernameTxtRegist.getText().equals("Create your username")) {
+            usernameTxtRegist.setText("");
+            emailTxt.setFocusable(true);
+        } else if (usernameTxtRegist.hasFocus()) {
+            usernameTxtRegist.selectAll();
+        }
+    }//GEN-LAST:event_usernameTxtRegistFocusGained
+
+    private void passwordRegFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordRegFocusGained
+        // TODO add your handling code here:
+        if (passwordReg.getText().equals("password")) {
+            passwordReg.setText("");
+            passwordConfirm.setFocusable(true);
+            passwordReg.setEchoChar('\u25cf');
+        } else if (passwordReg.hasFocus()) {
+            passwordReg.selectAll();
+        }
+    }//GEN-LAST:event_passwordRegFocusGained
+
+    private void passwordConfirmFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordConfirmFocusGained
+        // TODO add your handling code here:
+        if (passwordConfirm.getText().equals("password")) {
+            passwordConfirm.setText("");
+            passwordConfirm.setEchoChar('\u25cf');
+        } else if (passwordConfirm.hasFocus()) {
+            passwordConfirm.selectAll();
+        }
+    }//GEN-LAST:event_passwordConfirmFocusGained
+
+    private void emailTxtFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_emailTxtFocusGained
+        // TODO add your handling code here:
+        if (emailTxt.getText().equals("Type your email here")) {
+            emailTxt.setText("");
+            passwordReg.setFocusable(true);
+        } else if (emailTxt.hasFocus()) {
+            emailTxt.selectAll();
+        }
+    }//GEN-LAST:event_emailTxtFocusGained
+
     private void emailTxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_emailTxtMouseEntered
         // TODO add your handling code here:
         bgEmail.setBackground(bgEmail.getWarnaOver());
         this.over = true;
+        emailTxt.setFocusable(over);
     }//GEN-LAST:event_emailTxtMouseEntered
 
     private void emailTxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_emailTxtMouseExited
@@ -560,98 +792,53 @@ public class WelcomeFrameRegister extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_emailTxtMouseReleased
 
-    private void readPrivasiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_readPrivasiMouseEntered
+    private void ceklisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ceklisKeyPressed
         // TODO add your handling code here:
-        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        this.over = true;
-    }//GEN-LAST:event_readPrivasiMouseEntered
-
-    private void readPrivasiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_readPrivasiMouseExited
-        // TODO add your handling code here:
-        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        this.over = false;
-    }//GEN-LAST:event_readPrivasiMouseExited
-
-    private void readPrivasiMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_readPrivasiMousePressed
-        // TODO add your handling code here:
-        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        readPrivasi.setForeground(Color.WHITE);
-    }//GEN-LAST:event_readPrivasiMousePressed
-
-    private void readPrivasiMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_readPrivasiMouseReleased
-        // TODO add your handling code here:
-        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        if(this.over) {
-            readPrivasi.setForeground(new java.awt.Color(0, 0, 204));
-        } else {
-            readPrivasi.setForeground(new java.awt.Color(0, 0, 204));
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER && ceklis.isSelected() == false) {
+            ceklis.setSelected(true);
+        } else if (evt.getKeyCode() == KeyEvent.VK_ENTER && ceklis.isSelected() == true) {
+            ceklis.setSelected(false);
         }
-    }//GEN-LAST:event_readPrivasiMouseReleased
+    }//GEN-LAST:event_ceklisKeyPressed
 
-    private void passwordRegMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passwordRegMouseEntered
+    private void passwordConfirmKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordConfirmKeyReleased
         // TODO add your handling code here:
-        bgPassword.setBackground(bgPassword.getWarnaOver());
-        this.over = true;
-    }//GEN-LAST:event_passwordRegMouseEntered
-
-    private void passwordRegMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passwordRegMouseExited
-        // TODO add your handling code here:
-        bgPassword.setBackground(bgPassword.getWarna());
-        this.over = true;
-    }//GEN-LAST:event_passwordRegMouseExited
-
-    private void passwordRegMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passwordRegMousePressed
-        // TODO add your handling code here:
-        bgPassword.setBackground(bgPassword.getWarnaClick());
-    }//GEN-LAST:event_passwordRegMousePressed
-
-    private void passwordRegMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passwordRegMouseReleased
-        // TODO add your handling code here:
-        if(this.over){
-            bgPassword.setBackground(bgPassword.getWarnaOver());
-        } else {
-            bgPassword.setBackground(bgPassword.getWarna());
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER && ceklis.isSelected() == false) {
+            int confirmDialog;
+            confirmDialog = JOptionPane.showConfirmDialog(null, "Please Accept our Privacy and Policy!"+"\n"+
+                    "Click Cancek to read our Privacy and Policy!","EROR",
+                    JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
+            if ( confirmDialog == JOptionPane.CANCEL_OPTION) {
+                passwordConfirm.setNextFocusableComponent(readPrivasi);
+                passwordConfirm.nextFocus();
+            } else if (confirmDialog == JOptionPane.OK_OPTION) {
+                passwordConfirm.setNextFocusableComponent(ceklis);
+                passwordConfirm.nextFocus();
+            }
+        } else if (evt.getKeyCode() == KeyEvent.VK_ENTER && ceklis.isSelected() == true) {
+            RegistrationBtn.doClick();
         }
-    }//GEN-LAST:event_passwordRegMouseReleased
+    }//GEN-LAST:event_passwordConfirmKeyReleased
 
-    private void passwordConfirmMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passwordConfirmMouseEntered
+    private void readPrivasiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_readPrivasiMouseClicked
         // TODO add your handling code here:
-        bgPasswordConfirm.setBackground(bgPasswordConfirm.getWarnaOver());
-        this.over = true;
-    }//GEN-LAST:event_passwordConfirmMouseEntered
+        System.out.println("read it");
+    }//GEN-LAST:event_readPrivasiMouseClicked
 
-    private void passwordConfirmMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passwordConfirmMouseExited
+    private void readPrivasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_readPrivasiKeyPressed
         // TODO add your handling code here:
-        bgPasswordConfirm.setBackground(bgPasswordConfirm.getWarna());
-        this.over = false;
-    }//GEN-LAST:event_passwordConfirmMouseExited
-
-    private void passwordConfirmMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passwordConfirmMousePressed
-        // TODO add your handling code here:
-        bgPasswordConfirm.setBackground(bgPasswordConfirm.getWarnaClick());
-    }//GEN-LAST:event_passwordConfirmMousePressed
-
-    private void passwordConfirmMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passwordConfirmMouseReleased
-        // TODO add your handling code here:
-        if (this.over){
-            bgPasswordConfirm.setBackground(bgPasswordConfirm.getWarnaOver());
-        } else {
-            bgPasswordConfirm.setBackground(bgPasswordConfirm.getWarna());
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            System.out.println("read it");
         }
-    }//GEN-LAST:event_passwordConfirmMouseReleased
+    }//GEN-LAST:event_readPrivasiKeyPressed
 
-    private void RegistrationBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrationBtnActionPerformed
+    private void readPrivasiFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_readPrivasiFocusGained
         // TODO add your handling code here:
-    }//GEN-LAST:event_RegistrationBtnActionPerformed
-
-    private void ceklisItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ceklisItemStateChanged
-        // TODO add your handling code here:
-        if (evt.getStateChange() == ItemEvent.SELECTED) {
-            RegistrationBtn.setEnabled(true);
-        } else {
-            RegistrationBtn.setEnabled(false);
+        if (readPrivasi.hasFocus()) {
+            readPrivasi.setOpaque(true);
+            readPrivasi.setBackground(Color.WHITE);
         }
-    }//GEN-LAST:event_ceklisItemStateChanged
+    }//GEN-LAST:event_readPrivasiFocusGained
 
     /**
      * @param args the command line arguments
@@ -719,8 +906,6 @@ public class WelcomeFrameRegister extends javax.swing.JFrame {
     private javax.swing.JTextField fullNameTxt;
     private javax.swing.JMenuItem helpMenu;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -734,8 +919,6 @@ public class WelcomeFrameRegister extends javax.swing.JFrame {
     private javax.swing.JMenu menutTitle;
     private javax.swing.JPanel panelBg;
     private javax.swing.JPanel panelEmail;
-    private javax.swing.JPanel panelFormUsername;
-    private javax.swing.JPanel panelFormUsername1;
     private javax.swing.JPanel panelFullName;
     private javax.swing.JPanel panelPasswordConfirm;
     private javax.swing.JPanel panelPasswordReg;
@@ -745,8 +928,6 @@ public class WelcomeFrameRegister extends javax.swing.JFrame {
     private javax.swing.JPasswordField passwordReg;
     private javax.swing.JLabel readPrivasi;
     private javax.swing.JMenuItem startMenu;
-    private javax.swing.JTextField usernameTxtLogin;
-    private javax.swing.JTextField usernameTxtLogin1;
     private javax.swing.JTextField usernameTxtRegist;
     // End of variables declaration//GEN-END:variables
 }
