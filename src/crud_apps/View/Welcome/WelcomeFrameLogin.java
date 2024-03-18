@@ -9,7 +9,6 @@ import crud_apps.Controller.CustomFonts;
 import crud_apps.Controller.Lokasi;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
-import java.util.Arrays;
 
 /**
  *
@@ -155,6 +154,9 @@ public class WelcomeFrameLogin extends javax.swing.JFrame {
         forgotPassword.setForeground(new java.awt.Color(0, 0, 204));
         forgotPassword.setText("forgot password?");
         forgotPassword.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                forgotPasswordMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 forgotPasswordMouseEntered(evt);
             }
@@ -175,7 +177,6 @@ public class WelcomeFrameLogin extends javax.swing.JFrame {
         passwordTxt.setText("password");
         passwordTxt.setToolTipText("");
         passwordTxt.setBorder(null);
-        passwordTxt.setEchoChar('\u0000');
         passwordTxt.setFocusable(false);
         passwordTxt.setNextFocusableComponent(LoginBtn);
         passwordTxt.setOpaque(false);
@@ -576,6 +577,14 @@ public class WelcomeFrameLogin extends javax.swing.JFrame {
         register.setVisible(true);
         dispose();
     }//GEN-LAST:event_menuFileActionPerformed
+
+    private void forgotPasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_forgotPasswordMouseClicked
+        // TODO add your handling code here:
+        WelcomeFrameForgotPassword lupa = new WelcomeFrameForgotPassword();
+        lupa.setLocation(lokasi.p());
+        lupa.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_forgotPasswordMouseClicked
 
     /**
      * @param args the command line arguments
