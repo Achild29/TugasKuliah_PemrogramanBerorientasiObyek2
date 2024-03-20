@@ -5,12 +5,16 @@
  */
 package crud_apps.View.Welcome;
 
+import crud_apps.Controller.CustomButton;
 import crud_apps.Controller.CustomFonts;
 import crud_apps.Controller.Lokasi;
+import crud_apps.Controller.RegisterController;
+import crud_apps.Model.RegisterModel;
 import java.awt.Color;
 import java.awt.event.ItemEvent;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 
 /**
  *
@@ -24,10 +28,12 @@ public class WelcomeFrameRegister extends javax.swing.JFrame {
     Lokasi lokasi = new Lokasi(this);
     private boolean over;
     CustomFonts fontCustoms = new CustomFonts();
+    private RegisterModel modelRegister;
+    private RegisterController registerController;
     public WelcomeFrameRegister() {
         initComponents();
     }
-    
+  
 //    public void itemStateChanged
 
     /**
@@ -116,7 +122,7 @@ public class WelcomeFrameRegister extends javax.swing.JFrame {
         fullNameTxt.setToolTipText("Type your Full name here");
         fullNameTxt.setBorder(null);
         fullNameTxt.setFocusable(false);
-        fullNameTxt.setName("Type your Full name here"); // NOI18N
+        fullNameTxt.setName(""); // NOI18N
         fullNameTxt.setNextFocusableComponent(usernameTxtRegist);
         fullNameTxt.setOpaque(false);
         fullNameTxt.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -700,11 +706,6 @@ public class WelcomeFrameRegister extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_passwordConfirmMouseReleased
 
-    private void RegistrationBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrationBtnActionPerformed
-        // TODO add your handling code here:
-        System.out.println("Tombol register clicked");
-    }//GEN-LAST:event_RegistrationBtnActionPerformed
-
     private void ceklisItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ceklisItemStateChanged
         // TODO add your handling code here:
         if (evt.getStateChange() == ItemEvent.SELECTED) {
@@ -840,6 +841,19 @@ public class WelcomeFrameRegister extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_readPrivasiFocusGained
 
+    private void RegistrationBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrationBtnActionPerformed
+        // TODO add your handling code here:
+        modelRegister = new RegisterModel(
+                fullNameTxt.getText(),
+                usernameTxtRegist.getText(),
+                emailTxt.getText(),
+                passwordReg.getText(),
+                passwordConfirm.getText());
+        
+        registerController = new RegisterController(this, modelRegister);
+        registerController.validation();
+    }//GEN-LAST:event_RegistrationBtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -930,4 +944,13 @@ public class WelcomeFrameRegister extends javax.swing.JFrame {
     private javax.swing.JMenuItem startMenu;
     private javax.swing.JTextField usernameTxtRegist;
     // End of variables declaration//GEN-END:variables
+
+    public JPasswordField getPasswordConfirm() {
+        return passwordConfirm;
+    }
+
+    public JPasswordField getPasswordReg() {
+        return passwordReg;
+    }
+    
 }

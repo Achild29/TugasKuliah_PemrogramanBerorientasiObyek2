@@ -281,7 +281,7 @@
                       <Border info="null"/>
                     </Property>
                     <Property name="focusable" type="boolean" value="false"/>
-                    <Property name="name" type="java.lang.String" value="Type your Full name here" noResource="true"/>
+                    <Property name="name" type="java.lang.String" value="" noResource="true"/>
                     <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
                       <ComponentRef name="usernameTxtRegist"/>
                     </Property>
