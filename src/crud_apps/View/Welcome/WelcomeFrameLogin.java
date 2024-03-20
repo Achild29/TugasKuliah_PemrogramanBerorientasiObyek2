@@ -6,9 +6,12 @@
 package crud_apps.View.Welcome;
 
 import crud_apps.Controller.CustomFonts;
+import crud_apps.Controller.LoginController;
 import crud_apps.Controller.Lokasi;
+import crud_apps.Model.LoginModel;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
+import javax.swing.JPasswordField;
 
 /**
  *
@@ -19,6 +22,8 @@ public class WelcomeFrameLogin extends javax.swing.JFrame {
     /**
      * Creates new form WelcomeFrame
      */
+    private LoginModel loginModel;
+    private LoginController loginController;
     Lokasi lokasi = new Lokasi(this);
     private boolean over;
     CustomFonts fontCustoms = new CustomFonts();
@@ -462,6 +467,12 @@ public class WelcomeFrameLogin extends javax.swing.JFrame {
     private void LoginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginBtnActionPerformed
         // TODO add your handling code here:
         System.out.println("OK");
+        loginModel = new LoginModel(
+                usernameTxtLogin.getText(),
+                passwordTxt.getText());
+        loginController = new LoginController(this, loginModel);
+        loginController.validation();
+        
     }//GEN-LAST:event_LoginBtnActionPerformed
 
     private void forgotPasswordMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_forgotPasswordMouseEntered
@@ -658,4 +669,9 @@ public class WelcomeFrameLogin extends javax.swing.JFrame {
     private javax.swing.JMenuItem startMenu;
     private javax.swing.JTextField usernameTxtLogin;
     // End of variables declaration//GEN-END:variables
+
+    public JPasswordField getPasswordTxt() {
+        return passwordTxt;
+    }
+
 }

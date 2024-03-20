@@ -29,11 +29,11 @@ public class RegisterController{
     }
     
 
-    public RegisterController(WelcomeFrameRegister frameRegister, RegisterModel modelRegister, RegisterDB registerDB) {
-        this.frameRegister = frameRegister;
-        this.modelRegister = modelRegister;
-        this.registerDB = registerDB;       
-    }
+//    public RegisterController(WelcomeFrameRegister frameRegister, RegisterModel modelRegister, RegisterDB registerDB) {
+//        this.frameRegister = frameRegister;
+//        this.modelRegister = modelRegister;
+//        this.registerDB = registerDB;       
+//    }
 
     public RegisterController(WelcomeFrameRegister frameRegister, RegisterModel modelRegister) {
         this.frameRegister = frameRegister;
@@ -114,7 +114,9 @@ public class RegisterController{
             JOptionPane.showMessageDialog(null, "CONFIRMATION PASSWORD harus sama dengan PASSWORD", "Confirmation Password is not Valid", JOptionPane.ERROR_MESSAGE);
         } else if ((password.length() <= 7) && (password.length() <= 7)) {
             JOptionPane.showMessageDialog(null, "Password minimal 8 Karakter", "Password is not Valid", JOptionPane.ERROR_MESSAGE);
-        } else {
+        } else if (password.equalsIgnoreCase("password")) {
+            JOptionPane.showMessageDialog(null, "Password anda terlalu mudah, silahkan pilih password yang lain", "Password is weak", JOptionPane.ERROR_MESSAGE);
+        }else {
             validField = true;
 //            System.out.println(validField);
         }

@@ -5,7 +5,6 @@
  */
 package crud_apps.View.Welcome;
 
-import crud_apps.Controller.CustomButton;
 import crud_apps.Controller.CustomFonts;
 import crud_apps.Controller.Lokasi;
 import crud_apps.Controller.RegisterController;
