@@ -6,11 +6,14 @@
 package crud_apps.View.Welcome;
 
 import crud_apps.Controller.CustomFonts;
+import crud_apps.Controller.ForgotPasswordController;
 import crud_apps.Controller.Lokasi;
+import crud_apps.Model.ForgotPasswordModel;
 import java.awt.Color;
 import java.awt.event.ItemEvent;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 
 /**
  *
@@ -21,18 +24,16 @@ public class WelcomeFrameForgotPassword extends javax.swing.JFrame {
     /**
      * Creates new form WelcomeFrame
      */
+    private ForgotPasswordController forgotPasswordController;
+    private ForgotPasswordModel forgotPasswordModel;
     Lokasi lokasi = new Lokasi(this);
     private boolean over;
     CustomFonts fontCustoms = new CustomFonts();
+    private WelcomeFrameLogin login = new WelcomeFrameLogin();
     public WelcomeFrameForgotPassword() {
         initComponents();
     }
     
-    private String sensorDisplay(String input){
-        int mid = input.length() / 2;
-        return  input.substring(0, mid) + "**(sensor)**" + input.substring(mid + 1);
-
-    }
     
 //    public void itemStateChanged
 
@@ -173,7 +174,7 @@ public class WelcomeFrameForgotPassword extends javax.swing.JFrame {
         jLabel6.setText("Please Make Sure!");
         panelAkunEmail.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
 
-        akunEmail.setFont(fontCustoms.getPoppinsMedium().deriveFont(18f)
+        akunEmail.setFont(fontCustoms.getPoppinsMedium().deriveFont(10f)
         );
         akunEmail.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         akunEmail.setToolTipText("your email based on our database while you register");
@@ -609,7 +610,6 @@ public class WelcomeFrameForgotPassword extends javax.swing.JFrame {
 
     private void loginMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginMenuActionPerformed
         // TODO add your handling code here:
-        WelcomeFrameLogin login = new WelcomeFrameLogin();
         login.setLocation(lokasi.p());
         login.setVisible(true);
         dispose();
@@ -765,6 +765,19 @@ public class WelcomeFrameForgotPassword extends javax.swing.JFrame {
     private void changePasswordBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changePasswordBtnActionPerformed
         // TODO add your handling code here:
         System.out.println("Tombol register clicked");
+        forgotPasswordModel = new ForgotPasswordModel(
+                namaAkunTxt.getText(),
+                emailTxt.getText(),
+                passwordReg.getText(),
+                passwordConfirm.getText()
+        );
+        forgotPasswordController = new ForgotPasswordController(this, forgotPasswordModel);
+//        System.out.println(forgotPasswordController.btnChange());
+        if (forgotPasswordController.btnChange()) {
+            login.setVisible(true);
+            dispose();
+        }
+        
     }//GEN-LAST:event_changePasswordBtnActionPerformed
 
     private void ceklisItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ceklisItemStateChanged
@@ -801,6 +814,7 @@ public class WelcomeFrameForgotPassword extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (passwordConfirm.getText().equals("password")) {
             passwordConfirm.setText("");
+            ceklis.setEnabled(true);
             passwordConfirm.setEchoChar('\u25cf');
         } else if (passwordConfirm.hasFocus()) {
             passwordConfirm.selectAll();
@@ -894,8 +908,12 @@ public class WelcomeFrameForgotPassword extends javax.swing.JFrame {
 
     private void cariBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cariBtnActionPerformed
         // TODO add your handling code here:
-        String akun = namaAkunTxt.getText();
-        String output = sensorDisplay(akun);
+       forgotPasswordModel = new ForgotPasswordModel(namaAkunTxt.getText());
+       forgotPasswordController = new ForgotPasswordController(this, forgotPasswordModel);
+       forgotPasswordController.btnCari();
+       
+//        String akun = namaAkunTxt.getText();
+        String output = forgotPasswordController.getOutputDisplay();
         akunEmail.setText(output);
         emailTxt.setEnabled(true);
         
@@ -908,14 +926,23 @@ public class WelcomeFrameForgotPassword extends javax.swing.JFrame {
 
     private void verifyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verifyBtnActionPerformed
         // TODO add your handling code here:
-        String ke1, ke2;
-        ke1 = namaAkunTxt.getText();
-        ke2 = emailTxt.getText();
         
-        if (ke1.equals(ke2)) {
+        forgotPasswordModel = new ForgotPasswordModel(
+                namaAkunTxt.getText(),
+                emailTxt.getText());
+        
+        forgotPasswordController = new ForgotPasswordController(this, forgotPasswordModel);
+        if (forgotPasswordController.btnVerify()) {
+            
+//        }
+//        String ke1, ke2;
+//        ke1 = namaAkunTxt.getText();
+//        ke2 = emailTxt.getText();
+//        
+//        if (ke1.equals(ke2)) {
             passwordReg.setEnabled(true);
             passwordConfirm.setEnabled(true);
-            ceklis.setEnabled(true);
+//            ceklis.setEnabled(true);
         } else {
             JOptionPane.showMessageDialog(null, "not match in database!","eror",JOptionPane.ERROR_MESSAGE);
         }
@@ -1048,4 +1075,13 @@ public class WelcomeFrameForgotPassword extends javax.swing.JFrame {
     private javax.swing.JMenuItem startMenu;
     private crud_apps.Controller.CustomButton verifyBtn;
     // End of variables declaration//GEN-END:variables
+
+    public JPasswordField getPasswordConfirm() {
+        return passwordConfirm;
+    }
+
+    public JPasswordField getPasswordReg() {
+        return passwordReg;
+    }
+
 }

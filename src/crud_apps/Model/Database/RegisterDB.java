@@ -29,7 +29,7 @@ public class RegisterDB {
     
     private final String intsertIntoSQL = "INSERT INTO users (NamaLengkap, Username, Password, Email, Created) VALUES (?, ?, ?, ?, ?)";
     private final String CreateDate = createDate.getCreateDate();
-    private final String cekUser = "SELECT * FROM users WHERE username = ?";
+    private final String cekUser = "SELECT Username FROM users WHERE Username = ?";
     
     public void validationDB(){
 //        System.out.println("before if validationDB");
@@ -84,21 +84,15 @@ public class RegisterDB {
             
             if (cek > 0 ) {
                 JOptionPane.showMessageDialog(null, "Selamat anda berhasil melakukan Registrasi", "Registration Successfull", JOptionPane.INFORMATION_MESSAGE);
-                ps.close();
             } else {
                 JOptionPane.showMessageDialog(null, "Registration failed", "erof", JOptionPane.ERROR_MESSAGE);
             }
-            
+            ps.close();
+            KoneksiDB.getConnection().close();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.getMessage()+"\n on StroingIntoDB", "EROR", JOptionPane.ERROR_MESSAGE);
         }
         
-        
-        
-        
-        
     }
-    
-        
     
 }
