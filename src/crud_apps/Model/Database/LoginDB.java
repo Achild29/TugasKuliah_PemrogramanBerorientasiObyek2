@@ -7,6 +7,7 @@ package crud_apps.Model.Database;
 
 import crud_apps.Controller.LoginController;
 import crud_apps.Model.LoginModel;
+import crud_apps.View.Welcome.MainHomeFrame;
 import crud_apps.View.Welcome.WelcomeFrame;
 import crud_apps.View.Welcome.WelcomeFrameLogin;
 import java.awt.HeadlessException;
@@ -44,11 +45,13 @@ public class LoginDB {
             ResultSet rs = ps.executeQuery();
             
             if (rs.next()) {
+//                new WelcomeFrameLogin().dispose();
                 JOptionPane.showMessageDialog(null, "Anda Berhasil Login sebagai"+"\n"+username,
                         "Welcome "+username, JOptionPane.INFORMATION_MESSAGE);
                 //next open home
-                new WelcomeFrame().setVisible(true);
-                new WelcomeFrameLogin().dispose();
+//                new MainHomeFrame().setVisible(true);
+                boolean successed = true;
+                loginModel.setSuccess(successed);
             }
             
             rs.close();

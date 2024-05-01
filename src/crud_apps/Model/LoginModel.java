@@ -12,6 +12,7 @@ package crud_apps.Model;
 public class LoginModel {
     private String username;
     private String password;
+    private boolean success;
 
     public LoginModel(String username, String password) {
         this.username = username;
@@ -32,6 +33,14 @@ public class LoginModel {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public boolean isSuccess() {
+        return success;
+    }
+
+    public void setSuccess(boolean success) {
+        this.success = success;
     }
     
     

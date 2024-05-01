@@ -11,6 +11,7 @@ import crud_apps.Controller.Lokasi;
 import crud_apps.Model.LoginModel;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 
 /**
@@ -466,12 +467,16 @@ public class WelcomeFrameLogin extends javax.swing.JFrame {
 
     private void LoginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginBtnActionPerformed
         // TODO add your handling code here:
-        System.out.println("OK");
+//        System.out.println("OK");
         loginModel = new LoginModel(
                 usernameTxtLogin.getText(),
                 passwordTxt.getText());
         loginController = new LoginController(this, loginModel);
         loginController.validation();
+        if (loginModel.isSuccess()) {
+            new MainHomeFrame().setVisible(loginModel.isSuccess());
+            this.dispose();
+        } else JOptionPane.showMessageDialog(null, "Username atau Password Salah", "Eror Login", JOptionPane.ERROR_MESSAGE);
         
     }//GEN-LAST:event_LoginBtnActionPerformed
 
